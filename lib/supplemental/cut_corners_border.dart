@@ -20,13 +20,13 @@ import 'package:flutter/widgets.dart';
 class CutCornersBorder extends OutlineInputBorder {
   const CutCornersBorder({
     BorderSide borderSide: const BorderSide(),
-    BorderRadius borderRadius: const BorderRadius.all(Radius.circular(2.0)),
+    BorderRadius borderRadius: const BorderRadius.all(Radius.circular(2)),
     this.cut: 7.0,
     double gapPadding: 2.0,
   }) : super(
             borderSide: borderSide,
-            borderRadius: borderRadius,
-            gapPadding: gapPadding);
+            gapPadding: gapPadding,
+            borderRadius: borderRadius);
 
   @override
   CutCornersBorder copyWith({
@@ -48,6 +48,7 @@ class CutCornersBorder extends OutlineInputBorder {
   @override
   ShapeBorder lerpFrom(ShapeBorder a, double t) {
     if (a is CutCornersBorder) {
+      // ignore: omit_local_variable_types
       final CutCornersBorder outline = a;
       return CutCornersBorder(
         borderRadius: BorderRadius.lerp(outline.borderRadius, borderRadius, t),
@@ -62,6 +63,7 @@ class CutCornersBorder extends OutlineInputBorder {
   @override
   ShapeBorder lerpTo(ShapeBorder b, double t) {
     if (b is CutCornersBorder) {
+      // ignore: omit_local_variable_types
       final CutCornersBorder outline = b;
       return CutCornersBorder(
         borderRadius: BorderRadius.lerp(borderRadius, outline.borderRadius, t),
@@ -75,6 +77,7 @@ class CutCornersBorder extends OutlineInputBorder {
 
   Path _notchedCornerPath(Rect center,
       [double start = 0.0, double extent = 0.0]) {
+    // ignore: omit_local_variable_types
     final Path path = Path();
     if (start > 0.0 || extent > 0.0) {
       path.relativeMoveTo(extent + start, center.top);
@@ -111,16 +114,20 @@ class CutCornersBorder extends OutlineInputBorder {
     assert(gapExtent != null);
     assert(gapPercentage >= 0.0 && gapPercentage <= 1.0);
 
+    // ignore: omit_local_variable_types
     final Paint paint = borderSide.toPaint();
+    // ignore: omit_local_variable_types
     final RRect outer = borderRadius.toRRect(rect);
     if (gapStart == null || gapExtent <= 0.0 || gapPercentage == 0.0) {
       canvas.drawPath(_notchedCornerPath(outer.middleRect), paint);
     } else {
+      // ignore: omit_local_variable_types
       final double extent =
           lerpDouble(0.0, gapExtent + gapPadding * 2.0, gapPercentage);
       switch (textDirection) {
         case TextDirection.rtl:
           {
+            // ignore: omit_local_variable_types
             final Path path = _notchedCornerPath(
                 outer.middleRect, gapStart + gapPadding - extent, extent);
             canvas.drawPath(path, paint);
@@ -128,6 +135,7 @@ class CutCornersBorder extends OutlineInputBorder {
           }
         case TextDirection.ltr:
           {
+            // ignore: omit_local_variable_types
             final Path path = _notchedCornerPath(
                 outer.middleRect, gapStart - gapPadding, extent);
             canvas.drawPath(path, paint);

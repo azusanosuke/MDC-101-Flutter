@@ -20,7 +20,8 @@ import 'product_columns.dart';
 class AsymmetricView extends StatelessWidget {
   final List<Product> products;
 
-  AsymmetricView({Key key, this.products});
+  // ignore: sort_constructors_first, avoid_unused_constructor_parameters
+  const AsymmetricView({Key key, this.products});
 
   List<Container> _buildColumns(BuildContext context) {
     if (products == null || products.isEmpty) {
@@ -36,11 +37,12 @@ class AsymmetricView extends StatelessWidget {
     /// helpers for creating the index of the product list that will correspond
     /// to the index of the list of columns.
     return List.generate(_listItemCount(products.length), (int index) {
-      double width = .59 * MediaQuery.of(context).size.width;
+      var width = .59 * MediaQuery.of(context).size.width;
       Widget column;
       if (index % 2 == 0) {
         /// Even cases
-        int bottom = _evenCasesIndex(index);
+        // ignore: omit_local_variable_types
+        final int bottom = _evenCasesIndex(index);
         column = TwoProductCardColumn(
             bottom: products[bottom],
             top: products.length - 1 >= bottom + 1
@@ -56,7 +58,7 @@ class AsymmetricView extends StatelessWidget {
       return Container(
         width: width,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: column,
         ),
       );
@@ -88,7 +90,7 @@ class AsymmetricView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       scrollDirection: Axis.horizontal,
-      padding: EdgeInsets.fromLTRB(0.0, 34.0, 16.0, 44.0),
+      padding: const EdgeInsets.fromLTRB(0, 34, 16, 44),
       children: _buildColumns(context),
     );
   }

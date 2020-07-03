@@ -28,17 +28,17 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          padding: const EdgeInsets.symmetric(horizontal: 24),
           children: <Widget>[
-            SizedBox(height: 80.0),
+            const SizedBox(height: 80),
             Column(
               children: <Widget>[
                 Image.asset('assets/diamond.png'),
-                SizedBox(height: 16.0),
-                Text('SHRINE'),
+                const SizedBox(height: 16),
+                const Text('SHRINE'),
               ],
             ),
-            SizedBox(height: 120.0),
+            const SizedBox(height: 120),
             // TODO: Wrap Username with AccentColorOverride (103)
             // TODO: Remove filled: true values (103)
             // TODO: Wrap Password with AccentColorOverride (103)
@@ -46,17 +46,17 @@ class _LoginPageState extends State<LoginPage> {
             // [Name]
             TextField(
               controller: _usernameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 filled: true,
                 labelText: 'Username',
               ),
             ),
             // Spacer
-            SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             // [Password]
             TextField(
                 controller: _passwordController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   filled: true,
                   labelText: 'Password',
                 ),
@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 // TODO: Add buttons (101)
                 FlatButton(
-                  child: Text('CANCEL'),
+                  child: const Text('CANCEL'),
                   onPressed: () {
                     // TODO: Clear the text fields (101)
                     _usernameController.clear();
@@ -78,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                 // TODO: Add an elevation to NEXT (103)
                 // TODO: Add a beveled rectangular border to NEXT (103)
                 RaisedButton(
-                  child: Text('NEXT'),
+                  child: const Text('NEXT'),
                   onPressed: () {
                     // TODO: Show the next page (101)
                     Navigator.pop(context);

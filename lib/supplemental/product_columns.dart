@@ -18,7 +18,7 @@ import '../model/product.dart';
 import 'product_card.dart';
 
 class TwoProductCardColumn extends StatelessWidget {
-  TwoProductCardColumn({
+  const TwoProductCardColumn({
     this.bottom,
     this.top,
   }) : assert(bottom != null);
@@ -31,10 +31,13 @@ class TwoProductCardColumn extends StatelessWidget {
         builder: (BuildContext context, BoxConstraints constraints) {
       const spacerHeight = 44.0;
 
-      double heightOfCards = (constraints.biggest.height - spacerHeight) / 2.0;
-      double heightOfImages = heightOfCards - ProductCard.kTextBoxHeight;
+      double heightOfCards;
+      heightOfCards = (constraints.biggest.height - spacerHeight) / 2;
+      double heightOfImages;
+      heightOfImages = heightOfCards - ProductCard.kTextBoxHeight;
       // TODO: Change imageAspectRatio calculation (104)
-      double imageAspectRatio = constraints.biggest.width / heightOfImages;
+      double imageAspectRatio;
+      imageAspectRatio = constraints.biggest.width / heightOfImages;
 
       // TODO: Replace Column with a ListView (104)
       return Column(
@@ -42,7 +45,7 @@ class TwoProductCardColumn extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Padding(
-            padding: EdgeInsetsDirectional.only(start: 28.0),
+            padding: const EdgeInsetsDirectional.only(start: 28),
             child: top != null
                 ? ProductCard(
                     imageAspectRatio: imageAspectRatio,
@@ -52,9 +55,9 @@ class TwoProductCardColumn extends StatelessWidget {
                     height: heightOfCards,
                   ),
           ),
-          SizedBox(height: spacerHeight),
+          const SizedBox(height: spacerHeight),
           Padding(
-            padding: EdgeInsetsDirectional.only(end: 28.0),
+            padding: const EdgeInsetsDirectional.only(end: 28),
             child: ProductCard(
               imageAspectRatio: imageAspectRatio,
               product: bottom,
@@ -67,7 +70,7 @@ class TwoProductCardColumn extends StatelessWidget {
 }
 
 class OneProductCardColumn extends StatelessWidget {
-  OneProductCardColumn({this.product});
+  const OneProductCardColumn({this.product});
 
   final Product product;
 
@@ -80,8 +83,8 @@ class OneProductCardColumn extends StatelessWidget {
         ProductCard(
           product: product,
         ),
-        SizedBox(
-          height: 40.0,
+        const SizedBox(
+          height: 40,
         ),
       ],
     );

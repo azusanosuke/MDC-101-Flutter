@@ -13,6 +13,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  pedantic_mono: any
+
 flutter:
   # TODO: Insert Fonts (103)
   uses-material-design: true
