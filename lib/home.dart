@@ -7,9 +7,7 @@ import 'model/products_repository.dart';
 import 'package:Shrine/model/product.dart' show Category, Product;
 
 class HomePage extends StatelessWidget {
-  // TODO: Make a collection of cards (102)
-
-// Replace this entire method
+  // Make a collection of cards (102)
   List<Card> _buildGridCards(BuildContext context) {
     List<Product> products;
     products = ProductsRepository.loadProducts(Category.all);
@@ -27,37 +25,41 @@ class HomePage extends StatelessWidget {
     return products.map((product) {
       return Card(
         clipBehavior: Clip.antiAlias,
-        // TODO: Adjust card heights (103)
+        // Adjust card heights (103)
+        elevation: 0,
         child: Column(
-          // TODO: Center items on the card (103)
-          crossAxisAlignment: CrossAxisAlignment.start,
+          // Center items on the card (103)
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             AspectRatio(
               aspectRatio: 18 / 11,
               child: Image.asset(
                 product.assetName,
                 package: product.assetPackage,
-                // TODO: Adjust the box size (102)
+                fit: BoxFit.fitWidth,
               ),
             ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
                 child: Column(
-                  // TODO: Align labels to the bottom and center (103)
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  // TODO: Change innermost Column (103)
+                  // Align labels to the bottom and center (103)
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  // Change innermost Column (103)
                   children: <Widget>[
-                    // TODO: Handle overflowing labels (103)
+                    // Handle overflowing labels (103)
                     Text(
-                      product.name,
-                      style: theme.textTheme.headline6,
+                      product == null ? '' : product.name,
+                      style: theme.textTheme.button,
+                      softWrap: false,
+                      overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      formatter.format(product.price),
-                      style: theme.textTheme.subtitle2,
+                      product == null ? '' : formatter.format(product.price),
+                      style: theme.textTheme.caption,
                     ),
                   ],
                 ),
@@ -77,7 +79,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       // TODO: Add app bar (102)
       appBar: AppBar(
-        // TODO: Add buttons and title (102)
+        // Add buttons and title (102)
         leading: IconButton(
           icon: Icon(
             Icons.menu,
@@ -88,7 +90,7 @@ class HomePage extends StatelessWidget {
           },
         ),
         title: const Text('SHRINE'),
-        // TODO: Add trailing buttons (102)
+        // Add trailing buttons (102)
         actions: <Widget>[
           IconButton(
             icon: Icon(
@@ -101,14 +103,12 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      // TODO: Add a grid view (102)
       body: GridView.count(
         crossAxisCount: 2,
         padding: const EdgeInsets.all(16),
         childAspectRatio: 8.0 / 9.0,
         children: _buildGridCards(context),
       ),
-      // TODO: Set resizeToAvoidBottomInset (101)
       resizeToAvoidBottomInset: false,
     );
   }

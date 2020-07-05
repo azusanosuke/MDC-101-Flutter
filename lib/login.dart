@@ -35,42 +35,43 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Image.asset('assets/diamond.png'),
                 const SizedBox(height: 16),
-                const Text('SHRINE'),
+                Text(
+                  'SHRINE',
+                  style: Theme.of(context).textTheme.headline5,
+                ),
               ],
             ),
             const SizedBox(height: 120),
             // TODO: Wrap Username with AccentColorOverride (103)
-            // TODO: Remove filled: true values (103)
-            // TODO: Wrap Password with AccentColorOverride (103)
-            // TODO: Add TextField widgets (101)
-            // [Name]
+            // Remove filled: true values (103)
             TextField(
               controller: _usernameController,
               decoration: const InputDecoration(
-                filled: true,
+                // Removed filled:true
                 labelText: 'Username',
               ),
             ),
-            // Spacer
             const SizedBox(height: 12),
-            // [Password]
             TextField(
-                controller: _passwordController,
-                decoration: const InputDecoration(
-                  filled: true,
-                  labelText: 'Password',
-                ),
-                obscureText: true
+              controller: _passwordController,
+              decoration: const InputDecoration(
+                // Removed filled: true
+                labelText: 'Password',
+              ),
+              obscureText: true,
             ),
-            // TODO: Add button bar (101)
+            // TODO: Wrap Password with AccentColorOverride (103)
+            // TODO: Add TextField widgets (101)
+            // [Name]
+            // Add button bar (101)
             ButtonBar(
               //TODO: Add a beveled rectangular border to CANCEL (103)
               children: <Widget>[
-                // TODO: Add buttons (101)
+                // Add buttons (101)
                 FlatButton(
                   child: const Text('CANCEL'),
                   onPressed: () {
-                    // TODO: Clear the text fields (101)
+                    // Clear the text fields (101)
                     _usernameController.clear();
                     _passwordController.clear();
                   },
@@ -80,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                 RaisedButton(
                   child: const Text('NEXT'),
                   onPressed: () {
-                    // TODO: Show the next page (101)
+                    // Show the next page (101)
                     Navigator.pop(context);
                   },
                 ),
