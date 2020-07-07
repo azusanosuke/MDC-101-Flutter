@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'supplemental/cut_corners_border.dart';
 
 import 'home.dart';
 import 'login.dart';
@@ -69,13 +70,13 @@ ThemeData _buildShrineTheme() {
     ),
     // Decorate the inputs (103)
     inputDecorationTheme: InputDecorationTheme(
-      focusedBorder: OutlineInputBorder(
+      focusedBorder: CutCornersBorder(
         borderSide: BorderSide(
           width: 2,
           color: kShrineBrown900,
         ),
       ),
-      border: OutlineInputBorder(),
+      border: const CutCornersBorder(),
     ),
   );
 }

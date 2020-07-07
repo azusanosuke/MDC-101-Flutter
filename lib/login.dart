@@ -27,6 +27,7 @@ class _LoginPageState extends State<LoginPage> {
   final _usernameFocusNode = FocusNode();
   final _passwordFocusNode = FocusNode();
 
+  @override
   void initState() {
     super.initState();
     _usernameFocusNode.addListener(() {
@@ -73,7 +74,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               focusNode: _usernameFocusNode,
             ),
-            SizedBox(height: 12.0),
+            const SizedBox(height: 12),
             TextField(
               controller: _passwordController,
               decoration: InputDecoration(
@@ -90,21 +91,28 @@ class _LoginPageState extends State<LoginPage> {
             // [Name]
             // Add button bar (101)
             ButtonBar(
-              //TODO: Add a beveled rectangular border to CANCEL (103)
+              //Add a beveled rectangular border to CANCEL (103)
               children: <Widget>[
                 // Add buttons (101)
                 FlatButton(
                   child: const Text('CANCEL'),
+                  shape: const BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(7)),
+                  ),
                   onPressed: () {
                     // Clear the text fields (101)
                     _usernameController.clear();
                     _passwordController.clear();
                   },
                 ),
-                // TODO: Add an elevation to NEXT (103)
-                // TODO: Add a beveled rectangular border to NEXT (103)
+                // Add an elevation to NEXT (103)
+                // Add a beveled rectangular border to NEXT (103)
                 RaisedButton(
                   child: const Text('NEXT'),
+                  elevation: 8,
+                  shape: const BeveledRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(7)),
+                  ),
                   onPressed: () {
                     // Show the next page (101)
                     Navigator.pop(context);
