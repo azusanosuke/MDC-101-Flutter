@@ -48,7 +48,7 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   // Change innermost Column (103)
                   children: <Widget>[
-                    // Handle overflowing labels (103)
+                    // TODO: Handle overflowing labels (103)
                     Text(
                       product == null ? '' : product.name,
                       style: theme.textTheme.button,
@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 4),
                     Text(
                       product == null ? '' : formatter.format(product.price),
                       style: theme.textTheme.caption,

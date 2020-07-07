@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'home.dart';
 import 'login.dart';
-import 'colors.dart';
+// ignore: directives_ordering
+import 'package:Shrine/colors.dart';
 
 // TODO: Convert ShrineApp to stateful widget (104)
 class ShrineApp extends StatelessWidget {
@@ -62,15 +63,24 @@ ThemeData _buildShrineTheme() {
     textTheme: _buildShrineTextTheme(base.textTheme),
     primaryTextTheme: _buildShrineTextTheme(base.primaryTextTheme),
     accentTextTheme: _buildShrineTextTheme(base.accentTextTheme),
-    // TODO: Add the icon themes (103)
+    // Add the icon themes (103)
+    primaryIconTheme: base.iconTheme.copyWith(
+        color: kShrineBrown900
+    ),
     // Decorate the inputs (103)
     inputDecorationTheme: InputDecorationTheme(
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(
+          width: 2,
+          color: kShrineBrown900,
+        ),
+      ),
       border: OutlineInputBorder(),
     ),
   );
 }
 
-// TODO: Build a Shrine Text Theme (103)
+// Build a Shrine Text Theme (103)
 TextTheme _buildShrineTextTheme(TextTheme base) {
   return base.copyWith(
     headline5: base.headline5.copyWith(
