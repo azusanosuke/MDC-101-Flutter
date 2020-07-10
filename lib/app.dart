@@ -45,18 +45,13 @@ final ThemeData _kShrineTheme = _buildShrineTheme();
 ThemeData _buildShrineTheme() {
   final base = ThemeData.light();
   return base.copyWith(
-    accentColor: kShrineBrown900,
-    primaryColor: kShrinePink100,
+    primaryColor: kShrinePurple,
     buttonTheme: base.buttonTheme.copyWith(
-      buttonColor: kShrinePink100,
-      colorScheme: base.colorScheme.copyWith(
-        secondary: kShrineBrown900,
-      ),
+      buttonColor: kShrinePurple,
+      textTheme: ButtonTextTheme.primary,
+      colorScheme: const ColorScheme.light().copyWith(primary: kShrinePurple),
     ),
-    buttonBarTheme: base.buttonBarTheme.copyWith(
-      buttonTextTheme: ButtonTextTheme.accent,
-    ),
-    scaffoldBackgroundColor: kShrineBackgroundWhite,
+    scaffoldBackgroundColor: kShrineSurfaceWhite,
     cardColor: kShrineBackgroundWhite,
     textSelectionColor: kShrinePink100,
     errorColor: kShrineErrorRed,

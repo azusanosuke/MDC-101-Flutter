@@ -81,7 +81,7 @@ class HomePage extends StatelessWidget {
       // Add app bar (102)
       appBar: AppBar(
         // Add buttons and title (102)
-        brightness: Brightness.light,
+        brightness: Brightness.dark,
         leading: IconButton(
           icon: Icon(Icons.menu),
           onPressed: () {
