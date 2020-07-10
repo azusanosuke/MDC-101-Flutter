@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import 'package:Shrine/colors.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -21,7 +20,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // Add text editing controllers (101)
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _unfocusedColor = Colors.grey[600];
@@ -31,12 +29,15 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    _usernameFocusNode.addListener(() {
+    _usernameFocusNode
+        .addListener(() {
       setState(() {
         //Redraw so that the username label reflects the focus state
       });
     });
-    _passwordFocusNode.addListener(() {
+
+    _passwordFocusNode
+        .addListener(() {
       setState(() {
         //Redraw so that the password label reflects the focus state
       });
@@ -53,10 +54,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 80),
             Column(
               children: <Widget>[
-                Image.asset(
-                  'assets/diamond.png',
-                  color: kShrineBlack,
-                ),
+                Image.asset('assets/diamond.png'),
                 const SizedBox(height: 16),
                 Text(
                   'SHRINE',
@@ -64,9 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ],
             ),
-            const SizedBox(height: 12),
-            // TODO: Wrap Username with AccentColorOverride (103)
-            // Remove filled: true values (103)
+            const SizedBox(height: 120),
             TextField(
               controller: _usernameController,
               decoration: InputDecoration(
@@ -89,28 +85,20 @@ class _LoginPageState extends State<LoginPage> {
                         : _unfocusedColor),
               ),
               focusNode: _passwordFocusNode,
+              obscureText: true,
             ),
-            // TODO: Wrap Password with AccentColorOverride (103)
-            // TODO: Add TextField widgets (101)
-            // [Name]
-            // Add button bar (101)
             ButtonBar(
-              //Add a beveled rectangular border to CANCEL (103)
               children: <Widget>[
-                // Add buttons (101)
                 FlatButton(
                   child: const Text('CANCEL'),
                   shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(7)),
                   ),
                   onPressed: () {
-                    // Clear the text fields (101)
                     _usernameController.clear();
                     _passwordController.clear();
                   },
                 ),
-                // Add an elevation to NEXT (103)
-                // Add a beveled rectangular border to NEXT (103)
                 RaisedButton(
                   child: const Text('NEXT'),
                   elevation: 8,
@@ -118,11 +106,10 @@ class _LoginPageState extends State<LoginPage> {
                     borderRadius: BorderRadius.all(Radius.circular(7)),
                   ),
                   onPressed: () {
-                    // Show the next page (101)
                     Navigator.pop(context);
                   },
                 ),
-              ]
+              ],
             ),
           ],
         ),
@@ -130,5 +117,6 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
 
 // TODO: Add AccentColorOverride (103)

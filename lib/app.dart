@@ -1,16 +1,13 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'supplemental/cut_corners_border.dart';
 
+import 'colors.dart';
 import 'home.dart';
 import 'login.dart';
-// ignore: directives_ordering
-import 'package:Shrine/colors.dart';
+import 'supplemental/cut_corners_border.dart';
 
 // TODO: Convert ShrineApp to stateful widget (104)
 class ShrineApp extends StatelessWidget {
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,31 +36,30 @@ class ShrineApp extends StatelessWidget {
   }
 }
 
-// Build a Shrine Theme (103)
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
 ThemeData _buildShrineTheme() {
   final base = ThemeData.light();
   return base.copyWith(
-    primaryColor: kShrinePurple,
-    buttonTheme: base.buttonTheme.copyWith(
-      buttonColor: kShrinePurple,
-      textTheme: ButtonTextTheme.primary,
-      colorScheme: const ColorScheme.light().copyWith(primary: kShrinePurple),
-    ),
-    scaffoldBackgroundColor: kShrineSurfaceWhite,
+    accentColor: kShrineBrown900,
+    primaryColor: kShrinePink100,
+    buttonColor: kShrinePink100,
+    scaffoldBackgroundColor: kShrineBackgroundWhite,
     cardColor: kShrineBackgroundWhite,
     textSelectionColor: kShrinePink100,
     errorColor: kShrineErrorRed,
-    // Add the text themes (103)
-    textTheme: _buildShrineTextTheme(base.textTheme),
-    primaryTextTheme: _buildShrineTextTheme(base.primaryTextTheme),
-    accentTextTheme: _buildShrineTextTheme(base.accentTextTheme),
-    // Add the icon themes (103)
+    buttonTheme: base.buttonTheme.copyWith(
+      buttonColor: kShrinePink100,
+      colorScheme: base.colorScheme.copyWith(
+        secondary: kShrineBrown900,
+      ),
+    ),
+    buttonBarTheme: base.buttonBarTheme.copyWith(
+      buttonTextTheme: ButtonTextTheme.accent,
+    ),
     primaryIconTheme: base.iconTheme.copyWith(
         color: kShrineBrown900
     ),
-    // Decorate the inputs (103)
     inputDecorationTheme: InputDecorationTheme(
       focusedBorder: CutCornersBorder(
         borderSide: BorderSide(
@@ -73,10 +69,12 @@ ThemeData _buildShrineTheme() {
       ),
       border: const CutCornersBorder(),
     ),
+    textTheme: _buildShrineTextTheme(base.textTheme),
+    primaryTextTheme: _buildShrineTextTheme(base.primaryTextTheme),
+    accentTextTheme: _buildShrineTextTheme(base.accentTextTheme),
   );
 }
 
-// Build a Shrine Text Theme (103)
 TextTheme _buildShrineTextTheme(TextTheme base) {
   return base.copyWith(
     headline5: base.headline5.copyWith(
