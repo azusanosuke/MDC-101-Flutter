@@ -34,7 +34,7 @@ class _FrontLayer extends StatelessWidget {
   const _FrontLayer({
     Key key,
     this.child,
-  }) : super(key: key)
+  }) : super(key: key);
 
   final Widget child;
 
@@ -54,9 +54,8 @@ class _FrontLayer extends StatelessWidget {
           ),
         ],
       ),
-    ),
-  };
-
+    );
+  }
 }
 
 // TODO: Add _BackdropTitle class (104)
@@ -76,7 +75,9 @@ class _BackdropState extends State<Backdrop>
       children: <Widget>[
         // TODO: Wrap backLayer in an ExcludeSemantics widget (104)
         widget.backLayer,
-        widget.frontLayer,
+        // TODO: Add a PositionedTransition (104)
+        // TODO: Wrap front layer in _FrontLayer (104)
+        _FrontLayer(child: widget.frontLayer),
       ],
     );
   }
