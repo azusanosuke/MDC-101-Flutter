@@ -32,12 +32,14 @@ class Backdrop extends StatefulWidget {
 
 // Add _FrontLayer class (104)
 class _FrontLayer extends StatelessWidget {
-  // TODO: Add on-tap callback (104)
+  // Add on-tap callback (104)
   const _FrontLayer({
     Key key,
+    this.onTap,
     this.child,
   }) : super(key: key);
 
+  final VoidCallback onTap;
   final Widget child;
 
   @override
@@ -50,7 +52,15 @@ class _FrontLayer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-    // TODO: Add a GestureDetector (104)
+        // Add a GestureDetector (104)
+          GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: onTap,
+            child: Container(
+              height: 40,
+              alignment: AlignmentDirectional.centerStart,
+            ),
+          ),
           Expanded(
           child: child,
           ),
@@ -59,9 +69,6 @@ class _FrontLayer extends StatelessWidget {
     );
   }
 }
-
-// TODO: Add _BackdropTitle class (104)
-
 
 // Add _BackdropState class (104)
 class _BackdropState extends State<Backdrop>
@@ -82,8 +89,7 @@ class _BackdropState extends State<Backdrop>
     );
   }
 
-  // TODO: Add override for didUpdateWidget (104)
-
+  //Add override for didUpdateWidget (104)
   // ウィジェットがツリーから完全に削除されたとき1回だけ呼び出される
   @override
   void dispose() {
@@ -127,16 +133,27 @@ class _BackdropState extends State<Backdrop>
           child: widget.backLayer,
           excluding: _frontLayerVisible,
         ),
-        // TODO: Add a PositionedTransition (104)
+        // Add a PositionedTransition (104)
         PositionedTransition(
           rect: layerAnimation,
           child: _FrontLayer(
-            // TODO: Implement onTap property on _BackdropState (104)
+            // Implement onTap property on _BackdropState (104)
+            onTap: _toggleBackdropLayerVisibility,
             child: widget.frontLayer,
           ),
         ),
       ],
     );
+  }
+  @override
+  void didUpdateWidget(Backdrop old) {
+    super.didUpdateWidget(old);
+
+    if (widget.currentCategory != old.currentCategory) {
+      _toggleBackdropLayerVisibility();
+    } else if (!_frontLayerVisible) {
+      _controller.fling(velocity: _kFlingVelocity);
+    }
   }
 
   @override
@@ -152,7 +169,7 @@ class _BackdropState extends State<Backdrop>
         icon: Icon(Icons.menu),
         onPressed: _toggleBackdropLayerVisibility,
       ),
-      title: Text('SHRINE'),
+      title: const Text('SHRINE'),
       actions: <Widget>[
         // TODO: Add shortcut to login screen from trailing icons (104)
         IconButton(
